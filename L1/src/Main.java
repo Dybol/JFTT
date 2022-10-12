@@ -10,6 +10,7 @@ public class Main {
 	private static void performLogic(final String[] args) throws IOException {
 		if (args.length < 3) {
 			System.out.println("Uruchom program z argumentami ./java <algorytm> <wzorzec> <nazwa_pliku>");
+			return;
 		}
 		final String algorithm = args[0];
 		final String template = args[1];
