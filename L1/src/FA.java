@@ -6,6 +6,8 @@ public class FA {
 	private final String text;
 	private final int m;
 	private final Set<String> alphabet = new HashSet<>();
+
+	//<Stan, Input>, stan do ktorego mozemy pojsc
 	private final Map<Pair<Integer, String>, Integer> sigma = new HashMap<>();
 
 	public FA(final String template, final String text) {
@@ -38,13 +40,13 @@ public class FA {
 		int q = 0;
 
 		for (int i = 0; i < n; i++) {
-			if (this.alphabet.contains(T[i])) {
+			try {
 				q = this.sigma.get(new Pair<>(q, T[i]));
 				if (q == this.m) {
 					final int s = i - this.m;
 					System.out.println("Wzorzec występuje z przesunięciem " + (s + 1));
 				}
-			} else {
+			} catch (final NullPointerException ex) {
 				q = 0;
 			}
 		}

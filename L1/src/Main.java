@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -13,7 +14,7 @@ public class Main {
 		}
 		final String algorithm = args[0];
 		final String template = args[1];
-		final String text = Files.readString(Path.of(args[2]));
+		final String text = Files.readString(Path.of(args[2]), Charset.availableCharsets().get("UTF-8"));
 
 		if (algorithm.equalsIgnoreCase("FA")) {
 			new FA(template, text);
